@@ -8,27 +8,22 @@ public class Sorter {
 
     public static void main(String[] args) throws IOException {
 
-        while (true) {
-            System.out.println("Введите номер алгоритма сортировки" + "\n" +
-                    "1. По алфавиту" + "\n" +
-                    "2. По количеству символов в строке." + "\n" +
-                    "3. По слову в строке заданному аргументом программы в виде порядкового номера (Убедитель что введен верный аргумент)");
+        System.out.println("Введите номер алгоритма сортировки" + "\n" +
+                "1. По алфавиту" + "\n" +
+                "2. По количеству символов в строке." + "\n" +
+                "3. По слову в строке заданному аргументом программы в виде порядкового номера (Убедитель что введен верный аргумент)");
 
-            Scanner sc = new Scanner(System.in);
-            int sortNumber = sc.nextInt();
-if (sortNumber==4){
-    return;
-}
+        Scanner sc = new Scanner(System.in);
+        int sortNumber = sc.nextInt();
 
-            try (BufferedReader bufferedReader = new BufferedReader(new FileReader("test.txt"));
-                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("testResult.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("test.txt"));
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("testResult.txt"))) {
 
-                reedAndAddForSort(bufferedReader);
+            reedAndAddForSort(bufferedReader);
 
-                sort(args, sortNumber);
+            sort(args, sortNumber);
 
-                writeToResultFile(bufferedWriter);
-            }
+            writeToResultFile(bufferedWriter);
         }
     }
 
@@ -58,10 +53,10 @@ if (sortNumber==4){
                     Collections.sort(list, (a, b) -> {
                         String[] aString = a.split(" ");
                         String[] bString = b.split(" ");
-                        return aString[wordPosition-1].toLowerCase().compareTo(bString[wordPosition-1].toLowerCase());
+                        return aString[wordPosition - 1].toLowerCase().compareTo(bString[wordPosition - 1].toLowerCase());
                     });
                 } catch (IndexOutOfBoundsException e) {
-                    System.out.println("слова под номером "+wordPosition+" нет в одной из строк. Введите меньшее число");
+                    System.out.println("слова под номером " + wordPosition + " нет в одной из строк. Введите меньшее число");
                 }
             } else {
                 System.out.println("Неверно введен аргумент. Введите ровно 1 аргумент");
